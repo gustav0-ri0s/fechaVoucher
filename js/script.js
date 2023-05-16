@@ -67,6 +67,9 @@ function handleImageUpload(event) {
       ctx.drawImage(img, 0, 0);
       ctx.font = '15px Arial';
       
+      //BARRA BLANCA
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, img.height - 27, img.width, 18);
       // Texto izquierdo
       ctx.fillStyle = 'red';
       ctx.textBaseline = 'bottom';
@@ -74,6 +77,7 @@ function handleImageUpload(event) {
       
       // Texto derecho
       ctx.textAlign = 'right';
+      ctx.fillStyle = 'red';
       ctx.fillText(`Fecha de carga: ${rightText.value}`, img.width - 10, img.height - 10);
       
       saveButton.disabled = false;
