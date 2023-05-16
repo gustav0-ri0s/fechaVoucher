@@ -93,6 +93,12 @@ function saveImage() {
   const leftDate = leftText.value;
   const rightDate = rightText.value;
 
+  // Obtener el nombre original del archivo
+  const filename = imageUpload.files[0].name;
+  
+  // Agregar el texto "con-sello" al nombre del archivo
+  const modifiedFilename = filename.replace(/(\.[\w\d_-]+)$/i, '-con-sello$1');
+
   // Establecer las fechas actualizadas en la imagen
   const fechaActualizada = new Date();
   fechaActualizada.setDate(leftDate.slice(-2));
@@ -116,7 +122,7 @@ function saveImage() {
   ctxCopy.fillText(`Fecha de carga: ${rightDate}`, canvas.width - 10, canvas.height - 10);
   
   link.href = canvasCopy.toDataURL('image/png');
-  link.download = 'imagen_con_sello.png';
+  link.download = modifiedFilename;
   link.click();
 }
 
